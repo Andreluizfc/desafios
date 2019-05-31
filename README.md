@@ -1,16 +1,10 @@
-# Desafios IDwall
+# Idwall Chalenge
 
-Repositótio de respostas para os desafios para a primeira fase de testes de candidatos da IDwall.
-Linguagem: Python3
+Repository of answers to the challenges for Idwall's first phase of candidates evaluating.
 
-1. Manipulação de Strings
+**Author**: André Luiz Figueiredo de Castro
+**Language**: Python 3
+
+1. Strings manipulation
 2. Web Crawler
-
-### Extras
-
-- Descreva o processo de resolução dos desafios; 
-- Descreva como utilizar a sua solução;
-- Tratamento de erros e exceções. Fica a seu critério quais casos deseja tratar e como serão tratados;
-- Testes unitários ou de integração;
-- Use o Docker.
 
