@@ -23,10 +23,11 @@ Returns:
 
 ### How to use
 
+```python
+python3 run_scrapper.py -t [topics to search]
+```
 
-Call: python3 run_scrapper.py -t [topics to search]
-
-Open terminal and type:
+Go to **src** directory. Open terminal and type:
 
 ```python
 
@@ -44,7 +45,9 @@ Inputs:
 
 ### How to use
 
-Call: python3 run_bot.py -t [bot token]
+```
+pythonpython3 run_bot.py -t [bot token]
+```
 
 Go to **src** directory. Open terminal and type:
 

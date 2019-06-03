@@ -25,7 +25,9 @@ Inputs:
 
 ### How to use
 
-Call: python3 run_formatter.py -f [file name] -l [maximum characters] -f [True or False]
+```python
+python3 run_formatter.py -f [file name] -l [maximum characters] -f [True or False]
+```
 
 Go to **src** directory. Open terminal and type:
 
