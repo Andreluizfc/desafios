@@ -30,6 +30,7 @@ def read_file_to_str(file):
     		return data
     except IOError:
         print("\nERROR: Could not read file - Check file name\n")
+        return ''
         sys.exit(0)
 
 def save_str_to_file(text):
@@ -40,12 +41,19 @@ def save_str_to_file(text):
     ----------
     text_formatted : string
         text
+
+    Returns
+    -------
+    boolean
+        True if saved file. False if not saved file.
     """
 
     try:
         with open('output.txt', 'w') as file:
             file.write(text)
             file.close()
+            return True
     except IOError:
         print("\nERROR: Could not save file.\n")
+        return False
         sys.exit(0)

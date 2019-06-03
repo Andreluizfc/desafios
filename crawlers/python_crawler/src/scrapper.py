@@ -1,4 +1,4 @@
-"""@package crawlers
+"""@package scrapper
 Scrapper reddit page routines
 
 ##
@@ -8,16 +8,17 @@ Scrapper reddit page routines
 
 """
 
-import	os, sys 
-import	requests
-import	re
-from	bs4 import BeautifulSoup as bs
-
+from bs4 import BeautifulSoup as bs
+import os, sys 
+import requests
+import re
 
 def search_topic(search_topic):
+
+
 	"""
-    Search a specific topic in the reddit page
-	
+    	Search a specific topic in the reddit page
+
 	Parameters
 	----------
 	search_topic : string
@@ -28,12 +29,12 @@ def search_topic(search_topic):
 	content : string
 		relevant content about the search topic
 	"""
-
-    # Sets the urls to scrape
+	
+	# Sets the urls to scrape
 	default_url = 'https://old.reddit.com'
 	search_url = default_url+'/r/'+search_topic
 
-	# Variables 
+	# Variables
 	upvotes = 0
 	subreddit = ''
 	title = ''
@@ -42,10 +43,10 @@ def search_topic(search_topic):
 	content = ''
 
 	# Get reddit page content through a request using a custom User Agent
-	page = requests.get(search_url, headers = {'User-agent': 'reddit_bot'})
+	page = requests.get(search_url, headers={'User-agent': 'reddit_bot'})
 	# Use BeautifulSoup to parse page content to html
 	soup = bs(page.text, 'html.parser')
-	
+
 	# Get body of the page, where is defined by class named 'sitetable linklisting'
 	body = soup.find(class_='sitetable linklisting')
 	
@@ -54,9 +55,8 @@ def search_topic(search_topic):
 	# Get each post inside the div that containt the text 'thing_t3'
 	posts = body.find_all('div', id=re.compile('thing_t3'))
 
-	#For each post retrieved
-	for post in posts:
-		
+	# For each post retrieved
+	for post in posts:	
 		# Get hot posts. Score should be above 5000 likes!
 		if int(post.get('data-score')) < 5000:
 			continue
@@ -78,7 +78,7 @@ def search_topic(search_topic):
 
 	# If not hot topics, content is empty
 	if content == '':
-		content = '\nNo hot contents right now about {} =(\n'.format(search_topic)
+		content = '\n\nNo hot contents right now about {} =(\n\n'.format(search_topic)
 
 	# Return text with all the hot topics details
 	return content

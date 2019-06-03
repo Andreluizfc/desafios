@@ -9,14 +9,37 @@ Text formatter utils.
 
 import sys, textwrap
 
-def format_str_wrapper(text):
+
+
+def format_str_wrapper(text,limit):
+	"""
+    Format text to specified parameters
+
+    # Not used in this project
+	# This could be another altenative to avoid the function format_str():
+	# TODO: Improve to detect break line characters in text \n
+
+    Parameters
+    ----------
+    text : string
+        text to format
+    limit : int
+    	line limit
+
+    Returns
+    -------
+    formatted_text : string
+    	text formatted with parameters
+    """
+
 	formatted_text = ''
 
-	wrapper = textwrap.TextWrapper(width = 40)
+	# Creates a text wrapper to deal with the formatting
+	wrapper = textwrap.TextWrapper(width = limit)
 	wrap_list = wrapper.wrap(text=text)
 
 	for i in wrap_list:
-		i =  align_line(i,40)
+		i =  align_line(i,limit)
 		formatted_text = formatted_text + i + '\n'
 
 	return formatted_text
@@ -109,16 +132,35 @@ def justify_line(line,limit):
 
 	# split line into words
 	words = line.split()
-	count = limit - items_len(words)
-	while count > 0 and len(words) > 1:
+	# defines counter as the number of blank spaces to add to line
+	counter = limit - items_len(words)
+	# while has blank space to add and line not empty
+	while counter > 0 and len(words) > 1:
+		# for each word in the line
 		for i in range(len(words) - 1):
+			# add blank space to word in list
 			words[i] += ' '
-			count -= 1
-			if count < 1:  
+			counter -= 1
+			if counter < 1:  
 				break
 
+	# join all words in one string
 	justified = justified.join(words)
+
 	return justified
 
-def items_len(l):
-	return sum([ len(x) for x in l] )
+def items_len(list):
+	"""
+    Get total number of characters in a list of words	
+
+    Parameters
+    ----------
+    list : list
+        list containing words
+
+    Returns
+    -------
+    sum : int
+    	number of characters in the list of words
+    """
+	return sum([ len(x) for x in list] )

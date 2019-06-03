@@ -1,4 +1,4 @@
-"""@package crawlers
+"""@package bot
 Telegram bot routines.
 
 ##
@@ -10,31 +10,13 @@ Telegram bot routines.
 
 # Imports
 
+from src import scrapper
 import requests
 import json
-import scrapper
 
-
-def content_to_dict_format(content):
-	"""
-    Parse content of the API page to dictionaty format
-
-    Parameters
-    ----------
-    content : string
-        content to parse to dictionary format
-
-    Returns
-    -------
-    content_as_dict : dict
-    	content in dictionaty format
-    """
-
-	content_as_dict = json.loads(content)
-	return content_as_dict
 
 def get_updates(bot_token):
-	"""
+    """
     Get content in bot messages API
 
     Parameters
@@ -52,13 +34,31 @@ def get_updates(bot_token):
 	
 	# Get Telegram API page content through a request
 	response = requests.get(link)
-	# Parse content to 
+	# Parse content to utf8 style
 	content = response.content.decode("utf8")
 	content = content_to_dict_format(content)
 	return content
 
+def content_to_dict_format(content):
+    """
+    Parse content of the API page to dictionaty format
+
+    Parameters
+    ----------
+    content : string
+        content to parse to dictionary format
+
+    Returns
+    -------
+    content_as_dict : dict
+    	content in dictionaty format
+    """
+
+	content_as_dict = json.loads(content)
+	return content_as_dict
+
 def get_last_update(bot_token):
-	"""
+    """
     Get the last message sent to bot and who sent it
 
     Parameters
@@ -95,10 +95,10 @@ def get_last_update(bot_token):
 		message = 'null'
 
 	# Return tuple containing who sent the message and the message
-	return(user_id,message)
+	return(user_id, message)
 
-def send_message(text, user_id, bot_token):
-	"""
+def send_message(user_id, text, bot_token):
+    """
     Bot send a message to some user
 
     Parameters
@@ -115,11 +115,13 @@ def send_message(text, user_id, bot_token):
 	# Try to make a request to the send message API 
 	try:
 		requests.get(link)
+		return True
 	except requests.exceptions.RequestException as e:
 		print('\n\n Request Error: {}'.format(e))
+		return False
 
 def handle_user_message(message):
-	"""
+    """
     Handle message sent by user to bot
 
     Parameters

@@ -1,4 +1,4 @@
-"""@package crawlers
+"""@package scrapper
 Main routine for the scrapper scripts.
 
 ##
@@ -10,24 +10,23 @@ Main routine for the scrapper scripts.
 
 # Imports
 
-import 	os, sys 
-import	argparse
-import  scrapper
-import 	file_manager as fm
+from src import scrapper
+from src import file_manager as fm
+import sys 
+import argparse
 
 def main():
+
 
 	# Arguments parser to handle arguments
 
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-topics', default='empty', help='Topics to search divided by collon. Example: cats,dogs,brazil')
+	parser.add_argument('-topics', default='cats', help='Topic or list of topics to search divided by collon. Example: cats,dogs,brazil')
 	
 	# Try to parse args and checks if arguments are empty
 	try:
 		args = parser.parse_args()
-		if args.topics == 'empty':
-			parser.print_help()
-			sys.exit(0)
+
 	except:
 		print('\n\n Argument parser error! Check arguments.\n\n')
 		parser.print_help()
