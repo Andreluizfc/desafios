@@ -24,10 +24,12 @@ Returns:
 ### How to use
 
 ```python
+
 python3 run_scrapper.py -t [topics to search]
+
 ```
 
-Go to **src** directory. Open terminal and type:
+Go to **exec** directory. Open terminal and type:
 
 ```python
 
@@ -45,15 +47,17 @@ Inputs:
 
 ### How to use
 
-```
-pythonpython3 run_bot.py -t [bot token]
+```python
+
+python3 run_bot.py -t [bot token]
+
 ```
 
-Go to **src** directory. Open terminal and type:
+Go to **exec** directory. Open terminal and type:
 
 ```python
 
-python3 run_scrapper.py -t your_telegram_bot_unique_token_here
+python3 run_bot.py -t your_telegram_bot_unique_token_here
 
 ```
 

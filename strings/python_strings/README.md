@@ -26,15 +26,18 @@ Inputs:
 ### How to use
 
 ```python
-python3 run_formatter.py -f [file name] -l [maximum characters] -f [True or False]
+
+python3 run_formatter.py -f [path to file] -l [maximum characters] -f [True or False]
+
 ```
 
-Go to **src** directory. Open terminal and type:
+Go to **exec** directory. Open terminal and type:
 
 
 ```python
 
-python3 run_formatter.py -f files/input_default.txt -l 40 -f True
+python3 run_formatter.py -f ../files/input_default.txt -l 40 -f True
+
 ```
 
 ## Running tests
